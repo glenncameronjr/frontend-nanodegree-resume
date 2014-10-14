@@ -1,41 +1,120 @@
-var formattedName = HTMLheaderName.replace("%data%", inName("glenn cameron"));
-var formattedRole = HTMLheaderRole.replace("%data%", "Tinkerer");
-var bioPic = HTMLbioPic.replace("%data%", "images/glenn.jpg");
-var formattedMobile = HTMLmobile.replace("%data%", "424.234.8852");
-var formattedEmail = HTMLemail.replace("%data%", "glenn@glenncameronjr.com");
-var formattedTwitter = HTMLtwitter.replace("%data%", "@glenncameronjr");
-var formattedLocation = HTMLlocation.replace("%data%", "Sunnyvale, CA");
-var formattedWelcome = HTMLWelcomeMsg.replace("%data%", "Welcome to my resumish website");
+var biography = 
+{
+    "bio": [
+        {
+            "name": inName("Glenn Cameron"),
+            "role": "Tinkerer",
+            "picture_url": "images/fry.jpg",
+            "welcome_message": "Welcome bitches!",
+            "skills": [
+                "Internet marketing",
+                "Web development",
+                "Awesomeness",
+                "Inventions"
+            ],
+            "contacts": [
+                {
+                    "email": "glenn@glenncameronjr.com",
+                    "mobile": "424.234.8852",
+                    "twitter": "@glenncameronjr",
+                    "location": "Sunnyvale, California"
 
-$("#header").append(formattedName);
-$("#header").append(formattedRole);
-$("#header").append(bioPic);
-$("#header").append(formattedWelcome);
+                }
+            ]
+        }
+    ]
+}
+
+function displayBio() {
+    
+    for (x in biography.bio) {
+
+        var formattedRole = HTMLheaderRole.replace("%data%", biography.bio[x].role);
+        $("#header").prepend(formattedRole);
+
+        var formattedName = HTMLheaderName.replace("%data%", biography.bio[x].name);
+        $("#header").prepend(formattedName);
+
+        var bioPic = HTMLbioPic.replace("%data%", "images/glenn.jpg");
+        $("#header").append(bioPic);
+
+        var formattedWelcome = HTMLWelcomeMsg.replace("%data%", "Welcome to my resumish website");
+        $("#header").append(formattedWelcome);
+
+        $("#header").append(HTMLskillsStart);
+        for(skill in biography.bio[x].skills) {
+            var formattedSkill = HTMLskills.replace("%data%", biography.bio[x].skills[skill]);
+            $("#skills").append(formattedSkill);
+            
+        }
+
+        for(contact in biography.bio[x].contacts) {
+            var formattedMobile = HTMLmobile.replace("%data%", biography.bio[x].contacts[contact].mobile);
+            $("#topContacts").append(formattedMobile);
+            $("#footerContacts").append(formattedMobile);
+
+            var formattedEmail = HTMLemail.replace("%data%", biography.bio[x].contacts[contact].email);
+            $("#topContacts").append(formattedEmail);
+            $("#footerContacts").append(formattedEmail);
+
+            var formattedTwitter = HTMLtwitter.replace("%data%", biography.bio[x].contacts[contact].twitter);
+            $("#topContacts").append(formattedTwitter);
+            $("#footerContacts").append(formattedTwitter);
+
+            var formattedLocation = HTMLlocation.replace("%data%", biography.bio[x].contacts[contact].location);
+            $("#topContacts").append(formattedLocation);
+            $("#footerContacts").append(formattedLocation);
+
+        }
 
 
-$("#topContacts").append(formattedMobile);
-$("#topContacts").append(formattedEmail);
-$("#topContacts").append(formattedTwitter);
-$("#topContacts").append(formattedLocation);
 
 
-var  bio = {
-        "name": "Glenn",
-        "role": "Tinkerer",
-        "contacts": {
-            "email" : "glenn@glenncameronjr.com",
-            "number" : "424.234.8852",
-            "Twitter" : "@glenncameronjr"
-        },
-        "picture_url": "images/fry.jpg",
-        "welcome_message": "Welcome bitches!",
-        "skills": [
-            "Internet marketing",
-            "Web development",
-            "Awesomeness",
-            "Inventions"
-        ]
     }
+    
+}
+
+displayBio();
+/*
+if (biography.bio[0].length > 0) {
+    $("#header").append(HTMLskillsStart);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.bio.skills[0]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.bio.skills[1]);
+
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.bio.skills[2]);
+    
+    $("#skills").append(formattedSkill);
+}
+*/
+
+var projects = 
+{
+    "projects": [
+        {
+            "title": "Samsung Developer Conference i",
+            "location": "San Francisco, California",
+            "dates": "2013",
+            "desc": "Samsungs first international developer conference",
+            "images": [
+             "http://lorempixel.com/400/200/",
+             "http://lorempixel.com/400/200/"
+            ]
+        },
+        {
+            "title": "Samsung Developer Conference ii",
+            "location": "San Francisco, California",
+            "dates": "2013",
+            "desc": "Samsungs second international developer conference",
+            "images": [
+             "http://lorempixel.com/400/200/",
+             "http://lorempixel.com/400/200/"
+            ]
+        }
+    ]
+}
 
 
 //JSON format
@@ -48,7 +127,8 @@ var education = {
             "degree": "MBA",
             "major": "Internet Marketing",
             "graduated": "2013",
-            "online": "True"
+            "online": "True",
+            "location": "Melbourne, Florida"
         },
         {
             "school": "Univesity of Florida",
@@ -56,7 +136,8 @@ var education = {
             "degree": "BA",
             "major": "Biology",
             "graduated": "2011",
-            "online": "False"
+            "online": "False",
+            "location": "Gainesville, Florida"
         }
     ]
 }
@@ -85,12 +166,15 @@ var work = {
             "job": "Developer Marketing",
             "employer": "Samsung",
             "title": "Sr. Digital Marketing Manager",
-            "location": "Winter Park, Florida",
+            "location": "San Jose, California",
             "dates": "2013-Present",
             "desc_1": "Rebranding Samsung as a developer friendly company."
         }
     ]
 }
+
+
+
 //projects JSON
 
 var projects = 
@@ -101,19 +185,23 @@ var projects =
             "location": "San Francisco, California",
             "dates": "2013",
             "desc": "Samsungs first international developer conference",
-            "image": "http://lorempixel.com/400/200/"
+            "images": [
+             "http://lorempixel.com/400/200/",
+             "http://lorempixel.com/400/200/"
+            ]
         },
         {
             "title": "Samsung Developer Conference ii",
             "location": "San Francisco, California",
             "dates": "2013",
             "desc": "Samsungs second international developer conference",
-            "image": "http://lorempixel.com/400/201/"
+            "images": [
+             "http://lorempixel.com/400/200/",
+             "http://lorempixel.com/400/200/"
+            ]
         }
     ]
 }
-
-var locations = ["38.026332, -122.424909"];
 
 /*
 $("#header").append(HTMLskillsStart);
@@ -127,18 +215,7 @@ $("#skills").append(formattedSkill);
 */
 
 
-if (bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
 
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-	
-	$("#skills").append(formattedSkill);
-
-}
 function displayWork() {
 	for(job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
@@ -158,34 +235,52 @@ displayWork();
 
 function displayProjects() {
     for (project in projects.projects) {
-         $("#projects").append(HTMLprojectStart);
+        $("#projects").append(HTMLprojectStart);
         
 
         var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        $(".project-entry:last").append(formattedProjectTitle);
+
         //var formattedProjectLocation = HTMLprojectLocationreplace("%data%", projects.projects[project].location);
         var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        $(".project-entry:last").append(formattedProjectDates);
+        console.log(formattedProjectDates);
         var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].desc);
-        var formattedProjectImage= HTMLprojectImage.replace("%data%", projects.projects[project].image);
+        $(".project-entry:last").append(formattedProjectDescription);
+        //var formattedProjectImage= HTMLprojectImage.replace("%data%", projects.projects[project].image);
+        //$(".project-entry:last").append(formattedProjectFull);
         
+        if(projects.projects[project].images.length > 0) {
+            for(image in projects.projects[project].images) {
+                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+                $(".project-entry:last").append(formattedImage);
+            }
+        }
 
-        var formattedProjectFull = formattedProjectTitle + formattedProjectDates + formattedProjectDescription + formattedProjectImage;
 
-       $(".project-entry:last").append(formattedProjectFull);
+
+       // var formattedProjectFull = formattedProjectTitle + formattedProjectDates + formattedProjectDescription + formattedProjectImage;
+
+       //$(".project-entry:last").append(formattedProjectFull);
     }
 }
 
 displayProjects();
 
+/*
+function locationizer(work_obj) {
+    var locationArray = [];
 
+    for(var job in work_obj.jobs) {
+        var newLocation = work_obj.jobs[job].location;
+        locationArray.push(newLocation);
+    }
+    return locationArray;        
+}
 
-$(document).click(function(loc) {
-    var x = loc.pageX;
-    var y = loc.pageY;
+locationizer(work);
+*/
 
-    logClicks(x,y);
-    });
-
-$("#main").append(internationalizeButton);
 
 function inName(name) {
     name = name.trim().split(" ");
@@ -197,8 +292,6 @@ function inName(name) {
 }
 
 $("#main").append(internationalizeButton);
-
-inName("glenn cameron");
 
 $("#mapDiv").append(googleMap);
 
