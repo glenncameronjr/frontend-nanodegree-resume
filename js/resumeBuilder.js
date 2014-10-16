@@ -1,3 +1,5 @@
+//biography JSON
+
 var biography = 
 {
     "bio": [
@@ -25,70 +27,8 @@ var biography =
     ]
 }
 
-function displayBio() {
-    
-    for (x in biography.bio) {
 
-        var formattedRole = HTMLheaderRole.replace("%data%", biography.bio[x].role);
-        $("#header").prepend(formattedRole);
-
-        var formattedName = HTMLheaderName.replace("%data%", biography.bio[x].name);
-        $("#header").prepend(formattedName);
-
-        var bioPic = HTMLbioPic.replace("%data%", "images/glenn.jpg");
-        $("#header").append(bioPic);
-
-        var formattedWelcome = HTMLWelcomeMsg.replace("%data%", "Welcome to my resumish website");
-        $("#header").append(formattedWelcome);
-
-        $("#header").append(HTMLskillsStart);
-        for(skill in biography.bio[x].skills) {
-            var formattedSkill = HTMLskills.replace("%data%", biography.bio[x].skills[skill]);
-            $("#skills").append(formattedSkill);
-            
-        }
-
-        for(contact in biography.bio[x].contacts) {
-            var formattedMobile = HTMLmobile.replace("%data%", biography.bio[x].contacts[contact].mobile);
-            $("#topContacts").append(formattedMobile);
-            $("#footerContacts").append(formattedMobile);
-
-            var formattedEmail = HTMLemail.replace("%data%", biography.bio[x].contacts[contact].email);
-            $("#topContacts").append(formattedEmail);
-            $("#footerContacts").append(formattedEmail);
-
-            var formattedTwitter = HTMLtwitter.replace("%data%", biography.bio[x].contacts[contact].twitter);
-            $("#topContacts").append(formattedTwitter);
-            $("#footerContacts").append(formattedTwitter);
-
-            var formattedLocation = HTMLlocation.replace("%data%", biography.bio[x].contacts[contact].location);
-            $("#topContacts").append(formattedLocation);
-            $("#footerContacts").append(formattedLocation);
-
-        }
-
-
-
-
-    }
-    
-}
-
-displayBio();
-/*
-if (biography.bio[0].length > 0) {
-    $("#header").append(HTMLskillsStart);
-
-    var formattedSkill = HTMLskills.replace("%data%", bio.bio.skills[0]);
-    $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.bio.skills[1]);
-
-    $("#skills").append(formattedSkill);
-    formattedSkill = HTMLskills.replace("%data%", bio.bio.skills[2]);
-    
-    $("#skills").append(formattedSkill);
-}
-*/
+//projects JSON
 
 var projects = 
 {
@@ -100,7 +40,7 @@ var projects =
             "desc": "Samsungs first international developer conference",
             "images": [
              "http://lorempixel.com/400/200/",
-             "http://lorempixel.com/400/200/"
+             "http://lorempixel.com/375/200/"
             ]
         },
         {
@@ -109,38 +49,69 @@ var projects =
             "dates": "2013",
             "desc": "Samsungs second international developer conference",
             "images": [
-             "http://lorempixel.com/400/200/",
-             "http://lorempixel.com/400/200/"
+             "http://lorempixel.com/390/200/",
+             "http://lorempixel.com/200/200/"
             ]
         }
     ]
 }
 
-
-//JSON format
+//Education JSON
 
 var education = {
     "schools": [
         {
             "school": "Florida Institute of Technology",
-            "city": "Melbourne",
+            "dates": "2011-2013",
             "degree": "MBA",
             "major": "Internet Marketing",
             "graduated": "2013",
-            "online": "True",
             "location": "Melbourne, Florida"
         },
         {
             "school": "Univesity of Florida",
-            "city": "Gainesville",
+            "dates": "2007-2011",
             "degree": "BA",
             "major": "Biology",
             "graduated": "2011",
-            "online": "False",
             "location": "Gainesville, Florida"
+        }
+    ],
+    "onlineCourses": [
+        {
+            "title": "JavaScript Basics",
+            "school": "Udacity",
+            "dates": "2014",
+            "url": "https://www.udacity.com/course/ud804"
+        },
+        {
+            "title": "Intro to HTML and CSS",
+            "school": "Udacity",
+            "dates": "2014",
+            "url": "https://www.udacity.com/course/ud304"
         }
     ]
 }
+
+function displayEducation() {
+    for(edu in education.schools) {
+        $("#education").append(HTMLschoolStart);
+
+        var formattedHTMLschoolName = HTMLschoolName.replace("%data%", education.schools[edu].school);
+        console.log(education.schools[edu].school);
+        var formattedHTMLschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[edu].degree);
+        var formattedHTMLschoolDates = HTMLschoolDates.replace("%data%", education.schools[edu].dates);
+        var formattedHTMLschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[edu].location);
+        var formattedHTMLschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[edu].major);
+
+
+        var formattedEducation = formattedHTMLschoolName + formattedHTMLschoolDegree + formattedHTMLschoolDates + formattedHTMLschoolLocation + formattedHTMLschoolMajor;
+
+        $(".education-entry:last").append(formattedEducation);
+    }
+}
+
+displayEducation();
 
 //work Json data
 
@@ -186,8 +157,9 @@ var projects =
             "dates": "2013",
             "desc": "Samsungs first international developer conference",
             "images": [
-             "http://lorempixel.com/400/200/",
-             "http://lorempixel.com/400/200/"
+             "http://lorempixel.com/700/200/",
+             "http://lorempixel.com/200/200/",
+             "http://lorempixel.com/100/200/"
             ]
         },
         {
@@ -197,24 +169,59 @@ var projects =
             "desc": "Samsungs second international developer conference",
             "images": [
              "http://lorempixel.com/400/200/",
-             "http://lorempixel.com/400/200/"
+             "http://lorempixel.com/615/200/"
             ]
         }
     ]
 }
 
-/*
-$("#header").append(HTMLskillsStart);
+//displays biographical information
 
-var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-$("#skills").append(formattedSkill);
-formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-$("#skills").append(formattedSkill);
-formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-$("#skills").append(formattedSkill);
-*/
+function displayBio() {
+    
+    for (x in biography.bio) {
+
+        var formattedRole = HTMLheaderRole.replace("%data%", biography.bio[x].role);
+        $("#header").prepend(formattedRole);
+
+        var formattedName = HTMLheaderName.replace("%data%", biography.bio[x].name);
+        $("#header").prepend(formattedName);
+
+        var bioPic = HTMLbioPic.replace("%data%", "images/glenn.jpg");
+        $("#header").append(bioPic);
+
+        var formattedWelcome = HTMLWelcomeMsg.replace("%data%", "Welcome to my resumish website");
+        $("#header").append(formattedWelcome);
+
+        $("#header").append(HTMLskillsStart);
+        for(skill in biography.bio[x].skills) {
+            var formattedSkill = HTMLskills.replace("%data%", biography.bio[x].skills[skill]);
+            $("#skills").append(formattedSkill);
+            
+        }
+
+        for(contact in biography.bio[x].contacts) {
+            var formattedMobile = HTMLmobile.replace("%data%", biography.bio[x].contacts[contact].mobile);
+            $("#topContacts").append(formattedMobile);
+            $("#footerContacts").append(formattedMobile);
+
+            var formattedEmail = HTMLemail.replace("%data%", biography.bio[x].contacts[contact].email);
+            $("#topContacts").append(formattedEmail);
+            $("#footerContacts").append(formattedEmail);
+
+            var formattedTwitter = HTMLtwitter.replace("%data%", biography.bio[x].contacts[contact].twitter);
+            $("#topContacts").append(formattedTwitter);
+            $("#footerContacts").append(formattedTwitter);
+
+            var formattedLocation = HTMLlocation.replace("%data%", biography.bio[x].contacts[contact].location);
+            $("#topContacts").append(formattedLocation);
+            $("#footerContacts").append(formattedLocation);
+        }
+    }  
+}
 
 
+//Displays work history
 
 function displayWork() {
 	for(job in work.jobs) {
@@ -231,10 +238,11 @@ function displayWork() {
 	}
 }
 
-displayWork();
+//Displays projects
 
 function displayProjects() {
     for (project in projects.projects) {
+
         $("#projects").append(HTMLprojectStart);
         
 
@@ -251,20 +259,26 @@ function displayProjects() {
         //$(".project-entry:last").append(formattedProjectFull);
         
         if(projects.projects[project].images.length > 0) {
-            for(image in projects.projects[project].images) {
-                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+            for(i in projects.projects[project].images) {
+                console.log(projects.projects[project].images[i]);
+                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[i]);
+
+                console.log(project);
+                console.log(i);
+
                 $(".project-entry:last").append(formattedImage);
+
             }
         }
-
-
-
-       // var formattedProjectFull = formattedProjectTitle + formattedProjectDates + formattedProjectDescription + formattedProjectImage;
-
-       //$(".project-entry:last").append(formattedProjectFull);
     }
 }
 
+//console.log(projects.projects[1].images[0]);
+//console.log(projects.projects[0].images[0]);
+
+
+displayBio();
+displayWork();
 displayProjects();
 
 /*
@@ -280,6 +294,13 @@ function locationizer(work_obj) {
 
 locationizer(work);
 */
+
+$(document).click(function(loc) {
+    var x = loc.pageX;
+    var y = loc.pageY;
+
+    logClicks(x,y);
+   });
 
 
 function inName(name) {
