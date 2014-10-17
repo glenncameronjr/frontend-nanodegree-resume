@@ -1,5 +1,4 @@
 //biography JSON
-
 var biography = 
 {
     "bio": [
