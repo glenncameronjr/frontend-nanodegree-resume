@@ -224,10 +224,8 @@ function displayProjects() {
         var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].desc);
         $(".project-entry:last").append(formattedProjectDescription);
         if(projects.projects[project].images.length > 0) {
-            for(i in projects.projects[project].images) {
-                
-                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[i]);
-                
+            for(i in projects.projects[project].images) { 
+                var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[i]);               
                 $(".project-entry:last").append(formattedImage);
             }
         }
@@ -301,18 +299,6 @@ displayWork();
 displayProjects();
 displayEducation();
 
-/*
-function locationizer(work_obj) {
-    var locationArray = [];
-    for(var job in work_obj.jobs) {
-        var newLocation = work_obj.jobs[job].location;
-        locationArray.push(newLocation);
-    }
-    return locationArray;        
-}
-locationizer(work);
-*/
-
 $(document).click(function(loc) {
     var x = loc.pageX;
     var y = loc.pageY;
@@ -330,7 +316,14 @@ function inName(name) {
 
 //$("#main").append(internationalizeButton);
 
-
-
-
-
+/*
+function locationizer(work_obj) {
+    var locationArray = [];
+    for(var job in work_obj.jobs) {
+        var newLocation = work_obj.jobs[job].location;
+        locationArray.push(newLocation);
+    }
+    return locationArray;        
+}
+locationizer(work);
+*/
