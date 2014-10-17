@@ -277,7 +277,7 @@ function displayChart () {
         },
         yAxis: {
             title: {
-                text: '#WINNING'
+                text: 'Fruit eaten'
             }
         },
         series: [{
