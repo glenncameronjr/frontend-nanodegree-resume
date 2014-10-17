@@ -5,7 +5,7 @@ var biography =
         {
             "name": "Glenn Cameron",
             "role": "Tinkerer",
-            "picture_url": "images/fry.jpg",
+            "picture_url": "images/glenn.jpg",
             "welcome_message": "Welcome to my website!",
             "skills": [
                 "Internet marketing",
@@ -163,7 +163,7 @@ function displayBio() {
         var formattedName = HTMLheaderName.replace("%data%", inName(biography.bio[item].name));
         $("#header").prepend(formattedName);
 
-        var bioPic = HTMLbioPic.replace("%data%", "images/glenn.jpg");
+        var bioPic = HTMLbioPic.replace("%data%", biography.bio[item].picture_url);
         $("#header").append(bioPic);
 
         var formattedWelcome = HTMLWelcomeMsg.replace("%data%", biography.bio[item].welcome_message);
@@ -201,15 +201,15 @@ function displayBio() {
 
 //Displays work history
 function displayWork() {
-	for(job in work.jobs) {
-		$("#workExperience").append(HTMLworkStart);
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-		var formattedDesc = HTMLprojectDescription.replace("%data%", work.jobs[job].desc_1);
-		var formattedEmployerTitle = formattedEmployer + formattedTitle + formattedDates + formattedDesc;
-		$(".work-entry:last").append(formattedEmployerTitle);
-	}
+    for(job in work.jobs) {
+        $("#workExperience").append(HTMLworkStart);
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+        var formattedDesc = HTMLprojectDescription.replace("%data%", work.jobs[job].desc_1);
+        var formattedEmployerTitle = formattedEmployer + formattedTitle + formattedDates + formattedDesc;
+        $(".work-entry:last").append(formattedEmployerTitle);
+    }
 }
 
 //Displays projects
@@ -277,7 +277,7 @@ function displayChart () {
         },
         yAxis: {
             title: {
-                text: 'Fruit eaten'
+                text: '#WINNING'
             }
         },
         series: [{
