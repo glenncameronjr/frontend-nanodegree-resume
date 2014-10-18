@@ -114,11 +114,6 @@ function initializeMap() {
 
     // adds the single location property from bio to the locations array
     //locations.push(bio.contacts.location);
-   for (x in biography.bio) {
-      for(contact in biography.bio[x].contacts) {
-          locations.push(biography.bio[x].contacts[contact].location);
-      }
-    }
     
     // iterates through school locations and appends each location to
     // the locations array
@@ -128,13 +123,12 @@ function initializeMap() {
 
     // iterates through work locations and appends each location to
     // the locations array
-    for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
-    }
+    //for (var job in work.jobs) {
+    //  locations.push(work.jobs[job].location);
+    //}
 
     return locations;
   }
-
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
   placeData is the object returned from search results containing information

@@ -1,161 +1,34 @@
-//biography JSON
-var biography = 
-{
-    "bio": [
-        {
-            "name": "Glenn Cameron",
-            "role": "Tinkerer",
-            "picture_url": "images/glenn.jpg",
-            "welcome_message": "Welcome to my website!",
-            "skills": [
-                "Internet marketing",
-                "Web development",
-                "Awesomeness",
-                "Inventions"
-            ],
-            "contacts": [
-                {
-                    "email": "glenn@glenncameronjr.com",
-                    "mobile": "424.234.8852",
-                    "twitter": "@glenncameronjr",
-                    "github": "glenncameronjr",
-                    "location": "Sunnyvale, California"
-
-                }
-            ]
-        }
-    ]
-}
-
-//projects JSON
-var projects = 
-{
-    "projects": [
-        {
-            "title": "Samsung Developer Conference i",
-            "location": "San Francisco, California",
-            "dates": "2013",
-            "desc": "Samsung's first international developer conference",
-            "images": [
-             "http://lorempixel.com/400/200/",
-             "http://lorempixel.com/375/200/"
-            ]
-        },
-        {
-            "title": "Samsung Developer Conference ii",
-            "location": "San Francisco, California",
-            "dates": "2013",
-            "desc": "Samsung's second international developer conference",
-            "images": [
-             "http://lorempixel.com/390/200/",
-             "http://lorempixel.com/200/200/"
-            ]
-        }
-    ]
-}
-
-//Education JSON
-var education = {
-    "schools": [
-        {
-            "school": "Florida Institute of Technology",
-            "dates": "2011-2013",
-            "degree": "MBA",
-            "graduated": "2013",
-            "location": "Melbourne, Florida",
-            "major": [
-                "Internet Marketing"
-            ]
-        },
-        {
-            "school": "Univesity of Florida",
-            "dates": "2007-2011",
-            "degree": "BA",
-            "major": [
-                "Biology",
-            ],
-            "graduated": "2011",
-            "location": "Gainesville, Florida"
-        }
-    ],
-    "onlineCourses": [
-        {
-            "title": "JavaScript Basics",
-            "school": "Udacity",
-            "dates": "2014",
-            "linked": "https://www.udacity.com/course/ud804",
-            "url": "udacity.com/course/ud804"
-        },
-        {
-            "title": "Intro to HTML and CSS",
-            "school": "Udacity",
-            "dates": "2014",
-            "linked": "https://www.udacity.com/course/ud304",
-            "url": "udacity.com/course/ud304"
-        }
-    ]
-}
-
-//work Json data
-var work = {
-    "jobs": [
-        {
-            "job": "Marketing & Events",
-            "employer": "The Network",
-            "title": "CMO",
-            "location": "Gainesville, Florida",
-            "dates": "2009-2011",
-            "desc_1": "An online and offline social network"
-        },
-        {
-            "job": "Publishing",
-            "employer": "Bonnier Corporation",
-            "title": "Web Editor",
-            "location": "Winter Park, Florida",
-            "dates": "2012-2013",
-            "desc_1": "One of the largest media companies in the world."
-        },
-        {
-            "job": "Developer Marketing",
-            "employer": "Samsung",
-            "title": "Sr. Digital Marketing Manager",
-            "location": "San Jose, California",
-            "dates": "2013-Present",
-            "desc_1": "Rebranding Samsung as a developer friendly company."
-        }
-    ]
-}
-
-//projects JSON
-var projects = 
-{
-    "projects": [
-        {
-            "title": "Samsung Developer Conference i",
-            "location": "San Francisco, California",
-            "dates": "2013",
-            "desc": "Samsungs first international developer conference",
-            "images": [
-             "http://lorempixel.com/700/200/",
-             "http://lorempixel.com/200/200/",
-             "http://lorempixel.com/100/200/"
-            ]
-        },
-        {
-            "title": "Samsung Developer Conference ii",
-            "location": "San Francisco, California",
-            "dates": "2013",
-            "desc": "Samsungs second international developer conference",
-            "images": [
-             "http://lorempixel.com/400/200/",
-             "http://lorempixel.com/615/200/"
-            ]
-        }
-    ]
-}
-
 //displays biographical information
-function displayBio() {    
+function displayBio() {  
+
+    //biography JSON
+    var biography = 
+    {
+        "bio": [
+            {
+                "name": "Glenn Cameron",
+                "role": "Tinkerer",
+                "picture_url": "images/glenn.jpg",
+                "welcome_message": "Welcome to my website!",
+                "skills": [
+                    "Internet marketing",
+                    "Web development",
+                    "Awesomeness",
+                    "Inventions"
+                ],
+                "contacts": [
+                    {
+                        "email": "glenn@glenncameronjr.com",
+                        "mobile": "424.234.8852",
+                        "twitter": "@glenncameronjr",
+                        "github": "glenncameronjr",
+                        "location": "Sunnyvale, California"
+
+                    }
+                ]
+            }
+        ]
+    }  
     for (item in biography.bio) {
         var formattedRole = HTMLheaderRole.replace("%data%", biography.bio[item].role);
         $("#header").prepend(formattedRole);
@@ -201,6 +74,36 @@ function displayBio() {
 
 //Displays work history
 function displayWork() {
+
+    //work Json data
+    var work = {
+        "jobs": [
+            {
+                "job": "Marketing & Events",
+                "employer": "The Network",
+                "title": "CMO",
+                "location": "Gainesville, Florida",
+                "dates": "2009-2011",
+                "desc_1": "An online and offline social network"
+            },
+            {
+                "job": "Publishing",
+                "employer": "Bonnier Corporation",
+                "title": "Web Editor",
+                "location": "Winter Park, Florida",
+                "dates": "2012-2013",
+                "desc_1": "One of the largest media companies in the world."
+            },
+            {
+                "job": "Developer Marketing",
+                "employer": "Samsung",
+                "title": "Sr. Digital Marketing Manager",
+                "location": "San Jose, California",
+                "dates": "2013-Present",
+                "desc_1": "Rebranding Samsung as a developer friendly company."
+            }
+        ]
+    }
     for(job in work.jobs) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -210,10 +113,49 @@ function displayWork() {
         var formattedEmployerTitle = formattedEmployer + formattedTitle + formattedDates + formattedDesc;
         $(".work-entry:last").append(formattedEmployerTitle);
     }
+
+    function locationizer(work_obj) {
+    var locationArray = [];
+    for(var job in work.jobs) {
+        var newLocation = work.jobs[job].location;
+        locationArray.push(newLocation);
+    }
+    return locationArray;        
+}
+    locationizer(work);
+    cosole.log(2);
 }
 
 //Displays projects
 function displayProjects() {
+    //projects JSON
+    var projects = 
+    {
+        "projects": [
+            {
+                "title": "Samsung Developer Conference i",
+                "location": "San Francisco, California",
+                "dates": "2013",
+                "desc": "Samsung's first international developer conference",
+                "images": [
+                 "http://lorempixel.com/400/200/",
+                 "http://lorempixel.com/375/200/",
+                 "http://lorempixel.com/376/200/"
+                ]
+            },
+            {
+                "title": "Samsung Developer Conference ii",
+                "location": "San Francisco, California",
+                "dates": "2013",
+                "desc": "Samsung's second international developer conference",
+                "images": [
+                 "http://lorempixel.com/390/200/",
+                 "http://lorempixel.com/200/200/"
+                ]
+            }
+        ]
+    }
+
     for (project in projects.projects) {
         $("#projects").append(HTMLprojectStart);        
         var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -234,6 +176,47 @@ function displayProjects() {
 
 //educational information function
 function displayEducation() {
+    var education = {
+        "schools": [
+            {
+                "school": "Florida Institute of Technology",
+                "dates": "2011-2013",
+                "degree": "MBA",
+                "graduated": "2013",
+                "location": "Melbourne, Florida",
+                "major": [
+                    "Internet Marketing"
+                ]
+            },
+            {
+                "school": "Univesity of Florida",
+                "dates": "2007-2011",
+                "degree": "BA",
+                "major": [
+                    "Biology",
+                ],
+                "graduated": "2011",
+                "location": "Gainesville, Florida"
+            }
+        ],
+        "onlineCourses": [
+            {
+                "title": "JavaScript Basics",
+                "school": "Udacity",
+                "dates": "2014",
+                "linked": "https://www.udacity.com/course/ud804",
+                "url": "udacity.com/course/ud804"
+            },
+            {
+                "title": "Intro to HTML and CSS",
+                "school": "Udacity",
+                "dates": "2014",
+                "linked": "https://www.udacity.com/course/ud304",
+                "url": "udacity.com/course/ud304"
+            }
+        ]
+    }
+
     $("#education").append(HTMLschoolStart);
     for(edu in education.schools) {
         var formattedHTMLschoolName = HTMLschoolName.replace("%data%", education.schools[edu].school);
@@ -316,14 +299,3 @@ function inName(name) {
 
 //$("#main").append(internationalizeButton);
 
-/*
-function locationizer(work_obj) {
-    var locationArray = [];
-    for(var job in work_obj.jobs) {
-        var newLocation = work_obj.jobs[job].location;
-        locationArray.push(newLocation);
-    }
-    return locationArray;        
-}
-locationizer(work);
-*/
