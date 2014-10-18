@@ -27,33 +27,6 @@ var biography =
     ]
 }
 
-//projects JSON
-var projects = 
-{
-    "projects": [
-        {
-            "title": "Samsung Developer Conference i",
-            "location": "San Francisco, California",
-            "dates": "2013",
-            "desc": "Samsung's first international developer conference",
-            "images": [
-             "http://lorempixel.com/400/200/",
-             "http://lorempixel.com/375/200/"
-            ]
-        },
-        {
-            "title": "Samsung Developer Conference ii",
-            "location": "San Francisco, California",
-            "dates": "2013",
-            "desc": "Samsung's second international developer conference",
-            "images": [
-             "http://lorempixel.com/390/200/",
-             "http://lorempixel.com/200/200/"
-            ]
-        }
-    ]
-}
-
 //Education JSON
 var education = {
     "schools": [
@@ -154,8 +127,9 @@ var projects =
     ]
 }
 
+
 //displays biographical information
-function displayBio() {    
+biography.display = function() {    
     for (item in biography.bio) {
         var formattedRole = HTMLheaderRole.replace("%data%", biography.bio[item].role);
         $("#header").prepend(formattedRole);
@@ -199,8 +173,10 @@ function displayBio() {
     }  
 }
 
+$("#header").append(biography.display);
+
 //Displays work history
-function displayWork() {
+work.display = function() {
     for(job in work.jobs) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -212,9 +188,11 @@ function displayWork() {
     }
 }
 
-//Displays projects
-function displayProjects() {
-    for (project in projects.projects) {
+$("#workExperience").append(work.display);
+
+//display projects
+projects.display = function() {
+     for (project in projects.projects) {
         $("#projects").append(HTMLprojectStart);        
         var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
         $(".project-entry:last").append(formattedProjectTitle);
@@ -231,9 +209,10 @@ function displayProjects() {
         }
     }
 }
+$("#header").append(projects.display);
 
 //educational information function
-function displayEducation() {
+education.display = function() {
     $("#education").append(HTMLschoolStart);
     for(edu in education.schools) {
         var formattedHTMLschoolName = HTMLschoolName.replace("%data%", education.schools[edu].school);
@@ -261,7 +240,9 @@ function displayEducation() {
         $(".education-entry:last").append(formattedOnlineEducation);
     }
 }
+$("#education").append(education.display);
 
+//Display custom chart
 function displayChart () { 
     $('#skillsChart').highcharts({
         chart: {
@@ -291,13 +272,6 @@ function displayChart () {
 $('#skillsChart').append(displayChart());
 
 $("#mapDiv").append(googleMap);
-
-//Call functions
-
-displayBio();
-displayWork();
-displayProjects();
-displayEducation();
 
 $(document).click(function(loc) {
     var x = loc.pageX;
